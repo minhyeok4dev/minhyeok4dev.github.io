@@ -2,93 +2,88 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-<!-- <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
-<script>
-  window.OneSignal = window.OneSignal || [];
-  OneSignal.push(function() {
-    OneSignal.init({
-      appId: "3e056ceb-bf3c-4ca1-b0a6-f12b2b8319bc",
-    });
-  });
-</script> -->
-    
-    
-<script src="https://cdn.flarelane.com/WebSDK-staging.js"></script>
-<script>
-    var flarelane_initialized = false;
-    FlareLane.initialize({ projectId: "249f20f0-2b55-4b67-bf65-51b365296e3e" }).then(function() { console.log("initialize"); flarelane_initialized = true; });
-</script>
-    
-<script>
-function sendFlareLaneDemoNotification(el) {
-        try {
-          const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-          if (ios) {
-            alert('iOS 웹 푸시는 곧 지원될 예정입니다. 안드로이드 폰이나 PC 환경에서 다시 시도해보세요.');
-            return;
-          }
-          
-          console.log(flarelane_initialized);
-          
-          if (!flarelane_initialized) {
-            alert('ㄱㄷ');
-            return;
-          }
-          
-          const sotrageId = 'flarelane_dndly';
-          const delayTime = 3000;
-          const draft = Number(localStorage.getItem(sotrageId));
-          const now = new Date().getTime();
-          if (draft && now - draft < delayTime) {
-            return;
-          }
-          function setButtonState(disabled) {
-            el.disabled = disabled;
-            el.style.filter = disabled ? 'grayscale(1)' : 'grayscale(0)';
-          }
-          setButtonState(true);
-          FlareLane.getIsSubscribed((isSub) => {
-            if (isSub) {
-              FlareLane.getDeviceId(function (deviceId) {
-                if (!fetch) {
-                  return;
-                }
-                if (!deviceId) {
-                  alert('구독 후 알림 수신이 가능합니다. 구독을 해주세요.');
-                }
-                fetch('https://staging-service-api.flarelane.com/send-demo-notification', {
-                  method: 'POST',
-                  headers: {
-                    'Content-Type': 'application/json',
-                  },
-                  body: JSON.stringify({ deviceId: deviceId }),
-                })
-                  .then(function () {
-                    setButtonState(false);
-                  })
-                  .catch(function () {
-                    setButtonState(false);
-                  });
-              });
-            } else {
-              setButtonState(false);
-              alert('구독 후 알림 수신이 가능합니다. 구독을 해주세요.');
-            }
-          });
-          localStorage.setItem(sotrageId, now);
-        } catch {
-          el.disabled = false;
-          el.style.filter = 'grayscale(0)';
-        }
-      }
-</script>
-
+    <!-- <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script>
+      window.OneSignal = window.OneSignal || [];
+      OneSignal.push(function() {
+        OneSignal.init({
+          appId: "3e056ceb-bf3c-4ca1-b0a6-f12b2b8319bc",
+        });
+      });
+    </script> -->
   </head>
 <body>
-<h1>Hello, Web Push</h1>
-  
+  <h1>Hello, Web Push</h1>
   <button style="background-color: #1d4289;" type="button" onclick="sendFlareLaneDemoNotification(this)">Send Demo Notification</button>
+  
+  <script src="https://cdn.flarelane.com/WebSDK-staging.js"></script>
+  <script>
+      var flarelane_initialized = false;
+      FlareLane.initialize({ projectId: "249f20f0-2b55-4b67-bf65-51b365296e3e" }).then(function() { console.log("initialize"); flarelane_initialized = true; });
+  </script>
+
+  <script>
+    function sendFlareLaneDemoNotification(el) {
+            try {
+              const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+              if (ios) {
+                alert('iOS 웹 푸시는 곧 지원될 예정입니다. 안드로이드 폰이나 PC 환경에서 다시 시도해보세요.');
+                return;
+              }
+
+              console.log(flarelane_initialized);
+
+              if (!flarelane_initialized) {
+                alert('ㄱㄷ');
+                return;
+              }
+
+              const sotrageId = 'flarelane_dndly';
+              const delayTime = 3000;
+              const draft = Number(localStorage.getItem(sotrageId));
+              const now = new Date().getTime();
+              if (draft && now - draft < delayTime) {
+                return;
+              }
+              function setButtonState(disabled) {
+                el.disabled = disabled;
+                el.style.filter = disabled ? 'grayscale(1)' : 'grayscale(0)';
+              }
+              setButtonState(true);
+              FlareLane.getIsSubscribed((isSub) => {
+                if (isSub) {
+                  FlareLane.getDeviceId(function (deviceId) {
+                    if (!fetch) {
+                      return;
+                    }
+                    if (!deviceId) {
+                      alert('구독 후 알림 수신이 가능합니다. 구독을 해주세요.');
+                    }
+                    fetch('https://staging-service-api.flarelane.com/send-demo-notification', {
+                      method: 'POST',
+                      headers: {
+                        'Content-Type': 'application/json',
+                      },
+                      body: JSON.stringify({ deviceId: deviceId }),
+                    })
+                      .then(function () {
+                        setButtonState(false);
+                      })
+                      .catch(function () {
+                        setButtonState(false);
+                      });
+                  });
+                } else {
+                  setButtonState(false);
+                  alert('구독 후 알림 수신이 가능합니다. 구독을 해주세요.');
+                }
+              });
+              localStorage.setItem(sotrageId, now);
+            } catch {
+              el.disabled = false;
+              el.style.filter = 'grayscale(0)';
+            }
+          }
+  </script>
 </body>
 </html>
