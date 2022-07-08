@@ -14,7 +14,7 @@
   </head>
 <body>
   <h1>Hello, Web Push</h1>
-  <button style="background-color: #1d4289;" type="button" onclick="sendFlareLaneDemoNotification(this)">Send Demo Notification</button>
+  <button type="button" onclick="sendFlareLaneDemoNotification(this)">Send Demo Notification</button>
   
   <script src="https://cdn.flarelane.com/WebSDK-staging.js"></script>
   <script>
@@ -31,10 +31,8 @@
                 return;
               }
 
-              console.log(flarelane_initialized);
-
               if (!flarelane_initialized) {
-                alert('ㄱㄷ');
+                alert('잠시 후 구독 팝업이 뜹니다. 조금만 기다려주세요.');
                 return;
               }
 
@@ -45,11 +43,7 @@
               if (draft && now - draft < delayTime) {
                 return;
               }
-              function setButtonState(disabled) {
-                el.disabled = disabled;
-                el.style.filter = disabled ? 'grayscale(1)' : 'grayscale(0)';
-              }
-              setButtonState(true);
+
               FlareLane.getIsSubscribed((isSub) => {
                 if (isSub) {
                   FlareLane.getDeviceId(function (deviceId) {
@@ -57,7 +51,7 @@
                       return;
                     }
                     if (!deviceId) {
-                      alert('구독 후 알림 수신이 가능합니다. 구독을 해주세요.');
+                      alert('왼쪽 하단 종 모양 버튼을 통해 알림을 먼저 구독해주세요.');
                     }
                     fetch('https://staging-service-api.flarelane.com/send-demo-notification', {
                       method: 'POST',
@@ -66,22 +60,12 @@
                       },
                       body: JSON.stringify({ deviceId: deviceId }),
                     })
-                      .then(function () {
-                        setButtonState(false);
-                      })
-                      .catch(function () {
-                        setButtonState(false);
-                      });
                   });
                 } else {
-                  setButtonState(false);
                   alert('구독 후 알림 수신이 가능합니다. 구독을 해주세요.');
                 }
               });
               localStorage.setItem(sotrageId, now);
-            } catch {
-              el.disabled = false;
-              el.style.filter = 'grayscale(0)';
             }
           }
   </script>
