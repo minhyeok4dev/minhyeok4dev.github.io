@@ -26,21 +26,37 @@
           const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
           if (ios) {
             alert('iOS 웹 푸시는 곧 지원될 예정입니다. 안드로이드 폰이나 PC 환경에서 다시 시도해보세요.');
-          }
-          const sid = 'flarelane_dndly';
-          const dt = 1000;
-          const d = Number(localStorage.getItem(sid));
-          const n = new Date().getTime();
-          if (d && n - d < dt) {
             return;
           }
-          FlareLane.getDeviceId(function (did) {
-            if (!fetch) {
-              return;
+          const sotrageId = 'flarelane_dndly';
+          const delayTime = 1000;
+          const draft = Number(localStorage.getItem(sotrageId));
+          const now = new Date().getTime();
+          if (draft && now - draft < delayTime) {
+            return;
+          }
+          function send() {
+            FlareLane.getDeviceId(function (deviceId) {
+              if (!fetch) {
+                return;
+              }
+              fetch('https://staging-service-api.flarelane.com/send-demo-notification', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ deviceId: deviceId }),
+              }).catch(function () {});
+            });
+          }
+          FlareLane.getIsSubscribed((isSub) => {
+            if (isSub) {
+              send();
+            } else {
+              alert('구독 후 알림 수신이 가능합니다. 구독을 해주세요.');
             }
-            fetch('https://staging-service-api.flarelane.com/send-demo-notification', { method: 'POST', body: JSON.stringify({ deviceId: did }) }).catch(function () {});
           });
-          localStorage.setItem(sid, n);
+          localStorage.setItem(sotrageId, now);
         } catch {}
       }
     </script>
