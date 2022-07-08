@@ -38,7 +38,7 @@
             if (!fetch) {
               return;
             }
-            fetch('https://staging-service-api.flarelane.com/send-demo-notification', { method: 'POST' }).catch(function () {});
+            fetch('https://staging-service-api.flarelane.com/send-demo-notification', { method: 'POST', body: JSON.stringify({ deviceId: did }) }).catch(function () {});
           });
           localStorage.setItem(sid, n);
         } catch {}
