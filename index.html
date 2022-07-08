@@ -24,50 +24,50 @@
 
   <script>
     function sendFlareLaneDemoNotification(el) {
-            try {
-              const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-              if (ios) {
-                alert('iOS 웹 푸시는 곧 지원될 예정입니다. 안드로이드 폰이나 PC 환경에서 다시 시도해보세요.');
+      try {
+        const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+        if (ios) {
+          alert('iOS 웹 푸시는 곧 지원될 예정입니다. 안드로이드 폰이나 PC 환경에서 다시 시도해보세요.');
+          return;
+        }
+
+        if (!flarelane_initialized) {
+          alert('잠시 후 구독 팝업이 뜹니다. 조금만 기다려주세요.');
+          return;
+        }
+
+        const sotrageId = 'flarelane_dndly';
+        const delayTime = 3000;
+        const draft = Number(localStorage.getItem(sotrageId));
+        const now = new Date().getTime();
+        if (draft && now - draft < delayTime) {
+          return;
+        }
+
+        FlareLane.getIsSubscribed((isSub) => {
+          if (isSub) {
+            FlareLane.getDeviceId(function (deviceId) {
+              if (!fetch) {
                 return;
               }
-
-              if (!flarelane_initialized) {
-                alert('잠시 후 구독 팝업이 뜹니다. 조금만 기다려주세요.');
-                return;
+              if (!deviceId) {
+                alert('왼쪽 하단 종 모양 버튼을 통해 알림을 먼저 구독해주세요.');
               }
-
-              const sotrageId = 'flarelane_dndly';
-              const delayTime = 3000;
-              const draft = Number(localStorage.getItem(sotrageId));
-              const now = new Date().getTime();
-              if (draft && now - draft < delayTime) {
-                return;
-              }
-
-              FlareLane.getIsSubscribed((isSub) => {
-                if (isSub) {
-                  FlareLane.getDeviceId(function (deviceId) {
-                    if (!fetch) {
-                      return;
-                    }
-                    if (!deviceId) {
-                      alert('왼쪽 하단 종 모양 버튼을 통해 알림을 먼저 구독해주세요.');
-                    }
-                    fetch('https://staging-service-api.flarelane.com/send-demo-notification', {
-                      method: 'POST',
-                      headers: {
-                        'Content-Type': 'application/json',
-                      },
-                      body: JSON.stringify({ deviceId: deviceId }),
-                    })
-                  });
-                } else {
-                  alert('구독 후 알림 수신이 가능합니다. 구독을 해주세요.');
-                }
-              });
-              localStorage.setItem(sotrageId, now);
-            }
+              fetch('https://staging-service-api.flarelane.com/send-demo-notification', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ deviceId: deviceId }),
+              })
+            });
+          } else {
+            alert('구독 후 알림 수신이 가능합니다. 구독을 해주세요.');
           }
+        });
+        localStorage.setItem(sotrageId, now);
+      }
+          
   </script>
 </body>
 </html>
