@@ -17,7 +17,8 @@
     
 <script src="https://cdn.flarelane.com/WebSDK-staging.js"></script>
 <script>
-    FlareLane.initialize({ projectId: "249f20f0-2b55-4b67-bf65-51b365296e3e" });
+    var flarelane_initialized = false;
+    FlareLane.initialize({ projectId: "249f20f0-2b55-4b67-bf65-51b365296e3e" }).then(function() { flarelane_initialized = true; });
 </script>
     
 <script>
@@ -28,6 +29,12 @@ function sendFlareLaneDemoNotification(el) {
             alert('iOS 웹 푸시는 곧 지원될 예정입니다. 안드로이드 폰이나 PC 환경에서 다시 시도해보세요.');
             return;
           }
+          
+          if (!flarelane_initialized) {
+            alert('ㄱㄷ');
+            return;
+          }
+          
           const sotrageId = 'flarelane_dndly';
           const delayTime = 3000;
           const draft = Number(localStorage.getItem(sotrageId));
