@@ -19,6 +19,31 @@
 <script>
     FlareLane.initialize({ projectId: "249f20f0-2b55-4b67-bf65-51b365296e3e" });
 </script>
+    
+    <script>
+      function sendFlareLaneDemoNotification() {
+        try {
+          const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+          if (ios) {
+            alert('iOS 웹 푸시는 곧 지원될 예정입니다. 안드로이드 폰이나 PC 환경에서 다시 시도해보세요.');
+          }
+          const sid = 'flarelane_dndly';
+          const dt = 1000;
+          const d = Number(localStorage.getItem(sid));
+          const n = new Date().getTime();
+          if (d && n - d < dt) {
+            return;
+          }
+          FlareLane.getDeviceId(function (did) {
+            if (!fetch) {
+              return;
+            }
+            fetch('https://staging-service-api.flarelane.com/send-demo-notification', { method: 'POST' }).catch(function () {});
+          });
+          localStorage.setItem(sid, n);
+        } catch {}
+      }
+    </script>
 
 
 
@@ -27,5 +52,7 @@
   </head>
 <body>
 <h1>Hello, Web Push</h1>
+  
+  <button type="button" onclick="sendFlareLaneDemoNotification()">Send Demo Notification</button>
 </body>
 </html>
