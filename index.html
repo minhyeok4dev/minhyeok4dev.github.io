@@ -14,60 +14,13 @@
   </head>
 <body>
   <h1>Hello, Web Push</h1>
-  <button type="button" onclick="sendFlareLaneDemoNotification(this)">Send Demo Notification</button>
+  <button type="button" onclick="sendFlareLaneDemoNotification()">Send Demo Notification</button>
   
   <script src="https://cdn.flarelane.com/WebSDK-staging.js"></script>
   <script>
-      var flarelane_initialized = false;
-      FlareLane.initialize({ projectId: "249f20f0-2b55-4b67-bf65-51b365296e3e" }).then(function() { console.log("initialize"); flarelane_initialized = true; });
+      FlareLane.initialize({ projectId: "249f20f0-2b55-4b67-bf65-51b365296e3e" });
   </script>
 
-  <script>
-    function sendFlareLaneDemoNotification(el) {
-      try {
-        const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-        if (ios) {
-          alert('iOS 웹 푸시는 곧 지원될 예정입니다. 안드로이드 폰이나 PC 환경에서 다시 시도해보세요.');
-          return;
-        }
-
-        if (!flarelane_initialized) {
-          alert('잠시 후 구독 팝업이 뜹니다. 조금만 기다려주세요.');
-          return;
-        }
-
-        const sotrageId = 'flarelane_dndly';
-        const delayTime = 3000;
-        const draft = Number(localStorage.getItem(sotrageId));
-        const now = new Date().getTime();
-        if (draft && now - draft < delayTime) {
-          return;
-        }
-
-        FlareLane.getIsSubscribed((isSub) => {
-          if (isSub) {
-            FlareLane.getDeviceId(function (deviceId) {
-              if (!fetch) {
-                return;
-              }
-              if (!deviceId) {
-                alert('왼쪽 하단 종 모양 버튼을 통해 알림을 먼저 구독해주세요.');
-              }
-              fetch('https://staging-service-api.flarelane.com/send-demo-notification', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ deviceId: deviceId }),
-              })
-            });
-          } else {
-            alert('구독 후 알림 수신이 가능합니다. 구독을 해주세요.');
-          }
-        });
-        localStorage.setItem(sotrageId, now);
-      }
-          
-  </script>
+  <script>function sendFlareLaneDemoNotification(){try{const e={API_URL:"https://staging-service-api.flarelane.com/send-demo-notification",DRAFT_STORE_ID:"flarelane_dndly",delayTime:3e3,isIOS:/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream,fetch:{method:"POST",headers:{"Content-Type":"application/json"}}},t={IS_IOS:"iOS 웹 푸시는 지원 예정입니다. 안드로이드 폰이나 PC 환경에서 다시 시도해보세요.",WAIT_INITIALIZE:"잠시 후 구독 팝업이 노출됩니다. 조금만 기다려주세요!",SUBSCRIBE_FALSE:"왼쪽 아래 종 모양 버튼을 클릭하여 알림 구독을 먼저 진행하세요."};if(e.isIOS)return void alert(t.IS_IOS);if(FlareLane.isInitialized)return void alert(t.WAIT_INITIALIZE);const i=Number(localStorage.getItem(e.DRAFT_STORE_ID)),a=(new Date).getTime();if(i&&a-i<e.delayTime)return;FlareLane.getIsSubscribed(i=>{i?FlareLane.getDeviceId((function(i){fetch&&(i?fetch(e.API_URL,{method:e.fetch.method,headers:e.fetch.headers,body:JSON.stringify({deviceId:i})}).then((function(){})).catch((function(){})):alert(t.SUBSCRIBE_FALSE))})):alert(t.SUBSCRIBE_FALSE)}),localStorage.setItem(e.DRAFT_STORE_ID,String(a))}catch{}}</script>
 </body>
 </html>
