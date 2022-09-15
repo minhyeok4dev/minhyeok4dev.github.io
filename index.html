@@ -5,6 +5,7 @@
 <script src="https://cdn.flarelane.com/WebSDK-staging.js"></script>
     <script>
         FlareLane.initialize({ projectId: "faaac375-ee59-49c6-b1f2-81c2caf62c76" });
+        localStorage.setItem('flarelane_isTracerActivate', 'true');
         FlareLane.setLogHandler((t, d) => {
           const logsdom = document.getElementById('logs');
           
