@@ -4,18 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://cdn.flarelane.com/WebSDK-staging.js"></script>
     <script>
-        FlareLane.initialize({ projectId: "faaac375-ee59-49c6-b1f2-81c2caf62c76" });
-        localStorage.setItem('flarelane_isTracerActivate', 'true');
-        FlareLane.setLogHandler((t, d) => {
-          const logsdom = document.getElementById('logs');
-          
-          if (logsdom) {
-            const div = document.createElement('div');
-            div.innerText = t + ' : ' + JSON.stringify(d);
-            div.style.marginBottom = '16px';
-            logsdom.append(div);
-          }
-        });
+        FlareLane.initialize({ projectId: "73e46786-b288-4930-8fca-379c917a3d85" });
     </script>
 <!-- 
     <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
