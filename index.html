@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <script src="https://cdn.flarelane.com/WebSDK-staging.js"></script>
     <script>
+        FlareLane.setIsSubscribedChangeHandler((s) => {console.log(s);});
         FlareLane.initialize({ projectId: "73e46786-b288-4930-8fca-379c917a3d85" });
     </script>
 <!-- 
