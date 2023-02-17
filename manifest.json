@@ -2,7 +2,7 @@
     "short_name": "FlareLane",
     "name": "FlareLane",
     "icons": [],
-    "start_url": "/",
+    "start_url": "/direct.html",
     "background_color": "#FFFFFF",
     "theme_color": "#527CBD",
     "display": "fullscreen"
