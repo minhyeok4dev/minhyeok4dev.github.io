@@ -1,0 +1,9 @@
+{
+    "short_name": "FlareLane",
+    "name": "FlareLane",
+    "icons": [],
+    "start_url": "/",
+    "background_color": "#FFFFFF",
+    "theme_color": "#527CBD",
+    "display": "fullscreen"
+}
