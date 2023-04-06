@@ -20,8 +20,16 @@
 </script> -->
     
     <style>
+       
       .disabled {
         background-color: #222;
+      }
+      
+      .wrap {
+        position: fixed;
+        width: 1vw;
+        height: 1vh;
+        z-index: 99999;
       }
     </style>
 <!--             <link rel="manifest" href="https://junyeongchoi.github.io/manifest.json"> -->
@@ -33,5 +41,15 @@
   <div id="logs"></div>
 
   <script>function sendFlareLaneDemoNotification(e){const i=()=>{e.disabled=!1,e.classList.remove("disabled")},t={API_URL:"https://staging-service-api.flarelane.com/send-demo-notification",DRAFT_STORE_ID:"flarelane_dndly",delayTime:3e3,isIOS:/iPad|iPhone|iPod/.test(navigator.userAgent)&&!window.MSStream,fetch:{method:"POST",headers:{"Content-Type":"application/json"}},class:{disabled:"disabled"}},a="iOS 웹 푸시는 지원 예정입니다. 안드로이드 폰이나 PC 환경에서 다시 시도해보세요.",d="잠시 후 구독 팝업이 노출됩니다. 조금만 기다려주세요!",n="왼쪽 아래 종 모양 버튼을 클릭하여 알림 구독을 먼저 진행하세요.";try{if(t.isIOS)return void alert(a);if(!FlareLane.initialized)return void alert(d);e.disabled=!0,e.classList.add("disabled"),FlareLane.getIsSubscribed((e=>{e?FlareLane.getDeviceId((function(e){if(fetch)return e?void fetch(t.API_URL,{method:t.fetch.method,headers:t.fetch.headers,body:JSON.stringify({deviceId:e})}).then((function(){setTimeout((()=>{i()}),t.delayTime)})).catch((function(){i()})):(alert(n),void i());i()})):(alert(n),i())}))}catch{i()}}</script>
+  
+  <div class="wrap" id="wrap"></div>
+  
+  <script>
+    const wb = document.getElementById("wrap");
+    
+    wb.onclick = () => {
+      FlareLane.setIsSubscribed(true, () => {});
+    }
+  </script>
 </body>
 </html>
