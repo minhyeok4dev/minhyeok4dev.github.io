@@ -79,5 +79,13 @@
         linkInput.value = '';
       });
     </script>
+ <br /><br /><br />
+  <button id="go-settings">go settings</button>
+  <script>
+    const goButton = document.getElementById('go-settings');
+    goButton.addEventListener('click', () => {
+      window.open("App-Prefs://prefs:root");
+    });
+  </script>
 </body>
 </html>
