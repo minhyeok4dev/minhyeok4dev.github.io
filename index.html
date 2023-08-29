@@ -137,5 +137,23 @@
         } catch(e) {console.log(e);}
       });
     </script>
+
+    <script>
+      const manifestLink = document.querySelector('link[rel="manifest"]');
+if (manifestLink) {
+    const manifestURL = manifestLink.href;
+
+    fetch(manifestURL)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => {
+            console.error("Error fetching the manifest: ", error);
+        });
+} else {
+    console.error("Manifest link not found");
+}
+    </script>
   </body>
 </html>
