@@ -54,5 +54,28 @@
       wb.remove();
     }
   </script>
+  <br /><br /><br />
+    <input id="link-input" />
+    <button id="add-link-button">add link</button>
+    <div id="links"></div>
+    <script>
+      const linkInput = document.getElementById('link-input');
+      const linkButton = document.getElementById('add-link-button');
+      const links = document.getElementById('links');
+
+      linkButton.addEventListener('click', () => {
+        const v = linkInput.value;
+
+        const a = document.createElement('a');
+
+        a.href = v;
+        a.innerText = a.href;
+        a.style.margin = '8px 0';
+
+        links.append(a);
+
+        linkInput.value = '';
+      });
+    </script>
 </body>
 </html>
