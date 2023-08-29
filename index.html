@@ -67,12 +67,14 @@
         const v = linkInput.value;
 
         const a = document.createElement('a');
+        const b = document.createElement('br');
 
         a.href = v;
         a.innerText = a.href;
         a.style.margin = '8px 0';
 
         links.append(a);
+        links.append(b);
 
         linkInput.value = '';
       });
