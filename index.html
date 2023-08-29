@@ -130,7 +130,10 @@
       goButton.addEventListener('click', () => {
         try {
           // window.open('App-Prefs://prefs:root');
-          window.location.href = 'App-Prefs://prefs:root';
+          // window.location.href = 'App-Prefs://prefs:root';
+            const a = document.createElement('a');
+            a.href = 'App-Prefs://prefs:root';
+            a.click();
         } catch(e) {console.log(e);}
       });
     </script>
