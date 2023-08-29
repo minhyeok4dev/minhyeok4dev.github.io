@@ -128,7 +128,10 @@
     <script>
       const goButton = document.getElementById('go-settings');
       goButton.addEventListener('click', () => {
-        window.open('App-Prefs://prefs:root');
+        try {
+          // window.open('App-Prefs://prefs:root');
+          window.location.href = 'App-Prefs://prefs:root';
+        } catch(e) {console.log(e);}
       });
     </script>
   </body>
