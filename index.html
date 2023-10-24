@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="manifest.json" />
+    <script src="https://cdn.flarelane.com/WebSDK-staging.js"></script>
+    <title>테스트 쇼핑몰</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+      }
+
+      header {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+
+      .product {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        margin: 10px;
+        padding: 20px;
+      }
+
+      .product img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .product-title {
+        font-weight: bold;
+        margin: 10px 0;
+      }
+
+      .product-price {
+        color: #e74c3c;
+      }
+
+      .btn {
+        background-color: #3498db;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>테스트 쇼핑몰</h1>
+    </header>
+    <div class="container">
+      <div class="product">
+        <h2 class="product-title">상품 제목 1</h2>
+        <p class="product-price">$19.99</p>
+        <button class="btn">장바구니에 담기</button>
+      </div>
+      <div class="product">
+        <h2 class="product-title">상품 제목 2</h2>
+        <p class="product-price">$29.99</p>
+        <button class="btn">장바구니에 담기</button>
+      </div>
+      <!-- 여기에 더 많은 상품 정보를 추가할 수 있습니다. -->
+    </div>
+    <script>
+      FlareLane.initialize({ projectId: '3e640bca-39af-46c3-857e-0e8e1cfa2554' });
+    </script>
+  </body>
+</html>
