@@ -12,5 +12,6 @@
     }
     ],
     "start_url" : "/",
-    "display": "fullscreen"
+    "display": "fullscreen",
+    "description": "hello, this is description"
 }
