@@ -13,5 +13,6 @@
     ],
     "start_url" : "/",
     "display": "fullscreen",
-    "description": "hello, this is description"
+    "description": "hello, this is description",
+    "theme_color": "#002FA3"
 }
