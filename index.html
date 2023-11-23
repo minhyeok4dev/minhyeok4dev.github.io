@@ -79,7 +79,7 @@
 <script> FlareLane.initialize({ projectId: "6be7d281-5cdc-4c1e-b441-73a585322bff" }); 
   window.addEventListener('beforeinstallprompt', function (event) {
       event.preventDefault();
-      //@ts-ignore
+    alert('beforeinstallprompt');
       window.promptEvent = event;
 });
 </script>
