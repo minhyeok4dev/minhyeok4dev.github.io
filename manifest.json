@@ -1,71 +1,9 @@
-
-  "short_name": "플레어레인",
-  "name": "플레어레인",
-  "start_url": "/?utm_source=pwa&utm_medium=referral&utm_campaign=crowdy",
-  "scope": ".",
-  "display_override": [
-    "standalone",
-    "fullscreen",
-    "minimal-ui"
-  ],
-  "display": "standalone",
-  "background_color": "#fff",
-  "theme_color": "#002FA3",
-  "orientation": "portrait",
-  "categories": [
-    "lifestyle",
-    "finance",
-    "business",
-    "fundraising",
-    "shopping"
-  ],
-  "description": "크라우드펀딩, 멋진 아이디어, 명품 스타트업, 스타트업 투자, 영화투자, 서베이, 설문조사, 크베이",
-  "dir": "ltr",
-  "lang": "ko-KR",
-  "icons": [
-    {
-      "src": "resources/pwa/img/192.png",
-      "type": "image/png",
-      "sizes": "192x192",
-      "purpose": "any"
-    },
-    {
-      "src": "resources/pwa/img/152.png",
-      "type": "image/png",
-      "sizes": "152x152",
-      "purpose": "maskable"
-    },
-    {
-      "src": "resources/pwa/img/512.png",
-      "type": "image/png",
-      "sizes": "512x512",
-      "purpose": "maskable"
-    }
-  ],
-  "shortcuts": [
-    {
-      "name": "리워드 바로가기",
-      "short_name": "리워드 바로가기",
-      "description": "리워드 정보 확인하러 바로가기",
-      "url": "/reward/list?utm_source=pwa&utm_medium=referral&utm_campaign=crowdy",
-      "icons": [
-        {
-          "src": "resources/pwa/img/96.png",
-          "sizes": "96x96"
-        }
-      ]
-    },
-    {
-      "name": "투자 바로가기",
-      "short_name": "투자 바로가기",
-      "description": "투자 정보 확인하러 바로가기",
-      "url": "/invest/list?utm_source=pwa&utm_medium=referral&utm_campaign=crowdy",
-      "icons": [
-        {
-          "src": "resources/pwa/img/96.png",
-          "sizes": "96x96"
-        }
-      ]
-    }
-  ]
+{
+    "name": "플레어레인",
+    "icons": [{
+        "src": "/icon-192x192.png",
+        "sizes": "192x192",
+        "type": "image/png"
+    }],
+    "display": "fullscreen"
 }
