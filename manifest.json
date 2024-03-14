@@ -7,7 +7,8 @@
       "type": "image\/png"
      }],
     "start_url": "/",
-    "background_color": "#FFFFFF",
-    "theme_color": "#527CBD",
-    "display": "fullscreen"
-  }
+    "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fff",
+  "theme_color": "#3740ff"
+}
