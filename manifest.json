@@ -1,0 +1,19 @@
+{
+  "theme_color": "#2b5349",
+  "background_color": "#2b5349",
+  "icons": [
+    {
+      "sizes": "512x512",
+      "src": "https://s.pstatic.net/static/www/mobile/edit/20231109_1095/upload_1699514358075UmvS8.png",
+      "type": "image/png"
+    }
+  ],
+  "orientation": "any",
+  "display": "standalone",
+  "dir": "auto",
+  "lang": "ko",
+  "name": "플레어몰",
+  "short_name": "플레어몰",
+  "start_url": "/",
+  "scope": "/"
+}
