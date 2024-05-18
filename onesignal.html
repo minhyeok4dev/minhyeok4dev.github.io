@@ -3,20 +3,14 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>
-  window.OneSignal = window.OneSignal || [];
-  OneSignal.push(function() {
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(function(OneSignal) {
     OneSignal.init({
-      appId: "3e056ceb-bf3c-4ca1-b0a6-f12b2b8319bc",
+      appId: "3e056ceb-bf3c-4ca1-b0a6-f12b2b8319bc"
     });
   });
-  
-  OneSignal.push(["addListenerForNotificationOpened", function(data) {
-      console.log("Received NotificationOpened:");
-      console.log(data);
-      alert(data);
-  }]);
 </script>
     
     <style>
