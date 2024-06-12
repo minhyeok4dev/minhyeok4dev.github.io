@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fullsize</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body,
+      html {
+        width: 100%;
+        height: 100%;
+        background-color: #fff0;
+        margin: 0;
+        padding: 0;
+        -moz-tap-highlight-color: #fff0;
+        -webkit-tap-highlight-color: #fff0;
+        text-size-adjust: none;
+        overscroll-behavior: none;
+        overflow: hidden;
+      }
+      .container {
+        width: 100%;
+        height: calc(100% - 56px);
+        background-image: url(https://imagedelivery.net/lfkkXChLw6uG9RcA2ff5fg/a7cceb19-4f72-472b-ea53-25e801016100/flarelane);
+        background-size: cover;
+        background-position: center;
+      }
+      .controller {
+        position: relative;
+        width: 100%;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        border-top: 1px solid #e0e0e0;
+      }
+      .button {
+        width: 50%;
+        height: 100%;
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        font-weight: 600;
+        color: #222;
+        cursor: pointer;
+        overflow: hidden;
+      }
+      .gray {
+        color: #818181;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container"></div>
+    <div class="controller">
+      <div class="button gray">다시 보지 않기</div>
+      <div class="button">확인</div>
+    </div>
+  </body>
+</html>
