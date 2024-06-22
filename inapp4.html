@@ -143,12 +143,6 @@
           -->
           <button class="push-prompt">Prompt Push</button>
           <button class="close-button">Close</button>
-          <button class="test">Test</button>
-          <button class="test">Test</button>
-          <button class="test">Test</button>
-          <button class="test">Test</button>
-          <button class="test">Test</button>
-          <button class="test">Test</button>
         </div>
       </div>
     </div>
@@ -157,35 +151,118 @@
       document
         .querySelector(".open-url-web")
         .addEventListener("click", function (e) {
-          FlareLaneIAMBridge.openUrl("https://flarelane.co.kr/");
+          // FlareLaneIAMBridge.openUrl("https://flarelane.co.kr/");
+
+          if (
+            window.webkit &&
+            window.webkit.messageHandlers &&
+            window.webkit.messageHandlers.FlareLaneIAMBridge
+          ) {
+            var message = {
+              method: "openUrl",
+              url: "https://flarelane.co.kr/",
+            };
+            webkit.messageHandlers.FlareLaneIAMBridge.postMessage(message);
+          } else {
+            FlareLaneIAMBridge.openUrl("https://flarelane.co.kr/");
+          }
         });
       document
         .querySelector(".open-url-app")
         .addEventListener("click", function (e) {
-          FlareLaneIAMBridge.openUrl("maps://test");
+          // FlareLaneIAMBridge.openUrl("maps://test");
+
+          if (
+            window.webkit &&
+            window.webkit.messageHandlers &&
+            window.webkit.messageHandlers.FlareLaneIAMBridge
+          ) {
+            var message = {
+              method: "openUrl",
+              url: "maps://test",
+            };
+            webkit.messageHandlers.FlareLaneIAMBridge.postMessage(message);
+          } else {
+            FlareLaneIAMBridge.openUrl("maps://test");
+          }
         });
       document
         .querySelector(".set-tags")
         .addEventListener("click", function (e) {
-          FlareLaneIAMBridge.setTags({ foo: "bar" });
+          // FlareLaneIAMBridge.setTags({ foo: "bar" });
+
+          if (
+            window.webkit &&
+            window.webkit.messageHandlers &&
+            window.webkit.messageHandlers.FlareLaneIAMBridge
+          ) {
+            var message = {
+              method: "setTags",
+              tags: { foo: "bar" },
+            };
+            webkit.messageHandlers.FlareLaneIAMBridge.postMessage(message);
+          } else {
+            FlareLaneIAMBridge.setTags(JSON.stringify({ foo: "bar" }));
+          }
         });
       document
         .querySelector(".track-event")
         .addEventListener("click", function (e) {
-          FlareLaneIAMBridge.trackEvent("test_event", { foo: "bar" });
+          // FlareLaneIAMBridge.trackEvent("test_event", { foo: "bar" });
+
+          if (
+            window.webkit &&
+            window.webkit.messageHandlers &&
+            window.webkit.messageHandlers.FlareLaneIAMBridge
+          ) {
+            var message = {
+              method: "trackEvent",
+              type: "test_event",
+              data: { foo: "bar" },
+            };
+            webkit.messageHandlers.FlareLaneIAMBridge.postMessage(message);
+          } else {
+            FlareLaneIAMBridge.trackEvent(
+              "test_event",
+              JSON.stringify({ foo: "bar" })
+            );
+          }
         });
       document
         .querySelector(".push-prompt")
         .addEventListener("click", function (e) {
-          // Invoke the OneSignalIamApi.triggerPushPrompt method here while here passing in the event
-          // If this method is utilized then the message will not be sent to Android devices or older
-          // iOS devices where push prompting is not supported.
-          FlareLaneIAMBridge.requestPushPermission(true);
+          // FlareLaneIAMBridge.requestPushPermission(true);
+
+          if (
+            window.webkit &&
+            window.webkit.messageHandlers &&
+            window.webkit.messageHandlers.FlareLaneIAMBridge
+          ) {
+            var message = {
+              method: "requestPushPermission",
+            };
+            webkit.messageHandlers.FlareLaneIAMBridge.postMessage(message);
+          } else {
+            FlareLaneIAMBridge.requestPushPermission(true);
+          }
         });
       document
         .querySelector(".close-button")
         .addEventListener("click", function (e) {
-          FlareLaneIAMBridge.close();
+          // FlareLaneIAMBridge.close();
+
+          if (
+            window.webkit &&
+            window.webkit.messageHandlers &&
+            window.webkit.messageHandlers.FlareLaneIAMBridge
+          ) {
+            var message = {
+              method: "close",
+            };
+            webkit.messageHandlers.FlareLaneIAMBridge.postMessage(message);
+          } else {
+            FlareLaneIAMBridge.close();
+          }
         });
     </script>
   </body>
