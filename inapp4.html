@@ -191,7 +191,7 @@
       document
         .querySelector(".open-url-app")
         .addEventListener("click", function (e) {
-          // FlareLaneIAMBridge.openUrl("maps://test");
+          // FlareLaneIAMBridge.openUrl("fb://test");
 
           if (
             window.webkit &&
@@ -204,7 +204,7 @@
             };
             webkit.messageHandlers.FlareLaneIAMBridge.postMessage(message);
           } else if (window.FlareLaneIAMBridge) {
-            FlareLaneIAMBridge.openUrl("maps://test");
+            FlareLaneIAMBridge.openUrl("fb://test");
           }
         });
       document
