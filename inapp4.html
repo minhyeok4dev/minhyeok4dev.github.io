@@ -156,7 +156,7 @@
           <button class="track-event">Track Event</button>
           <button class="push-prompt">Prompt Push</button>
           <button class="close">Close</button>
-          <button class="test">For test</button>
+          <button class="mix">OpenURL+Close</button>
           <button class="test">For test</button>
           <button class="test">For test</button>
           <button class="test">For test</button>
@@ -282,6 +282,30 @@
             };
             webkit.messageHandlers.FlareLaneIAMBridge.postMessage(message);
           } else if (window.FlareLaneIAMBridge) {
+            FlareLaneIAMBridge.close();
+          }
+        });
+      document
+        .querySelector(".mix")
+        .addEventListener("click", function (e) {
+          // FlareLaneIAMBridge.openUrl("https://google.com");FlareLaneIAMBridge.close();
+
+          if (
+            window.webkit &&
+            window.webkit.messageHandlers &&
+            window.webkit.messageHandlers.FlareLaneIAMBridge
+          ) {
+            var message = {
+              method: "openUrl",
+              url: "https://google.com/",
+            };
+            webkit.messageHandlers.FlareLaneIAMBridge.postMessage(message);
+            var message = {
+              method: "close",
+            };
+            webkit.messageHandlers.FlareLaneIAMBridge.postMessage(message);
+          } else if (window.FlareLaneIAMBridge) {
+            FlareLaneIAMBridge.openUrl("https://flarelane.co.kr/");
             FlareLaneIAMBridge.close();
           }
         });
