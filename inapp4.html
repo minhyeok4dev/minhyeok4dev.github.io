@@ -155,9 +155,9 @@
           <button class="set-tags">Set Tags</button>
           <button class="track-event">Track Event</button>
           <button class="push-prompt">Prompt Push</button>
+          <button class="custom-click">Custom Click</button>
           <button class="close">Close</button>
           <button class="mix">OpenURL+Close</button>
-          <button class="test">For test</button>
           <button class="test">For test</button>
           <button class="test">For test</button>
           <button class="test">For test</button>
@@ -265,6 +265,30 @@
             webkit.messageHandlers.FlareLaneIAMBridge.postMessage(message);
           } else if (window.FlareLaneIAMBridge) {
             FlareLaneIAMBridge.requestPushPermission(true);
+          }
+        });
+      document
+        .querySelector(".custom-click")
+        .addEventListener("click", function (e) {
+          const actionId = JSON.stringify({
+              "routeType": "popup",
+              "routeTitle": "체크인",
+              "routeValue": "https://app.ssglanders.com/checkinList"
+          })
+          // FlareLaneIAMBridge.click(a);
+
+          if (
+            window.webkit &&
+            window.webkit.messageHandlers &&
+            window.webkit.messageHandlers.FlareLaneIAMBridge
+          ) {
+            var message = {
+              method: "click",
+              actionId
+            };
+            webkit.messageHandlers.FlareLaneIAMBridge.postMessage(message);
+          } else if (window.FlareLaneIAMBridge) {
+            FlareLaneIAMBridge.click(actionId);
           }
         });
       document
