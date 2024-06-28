@@ -155,7 +155,7 @@
           <button class="set-tags">Set Tags</button>
           <button class="track-event">Track Event</button>
           <button class="push-prompt">Prompt Push</button>
-          <button class="custom-click">Custom Click</button>
+          <button class="execute-action">Execute Action</button>
           <button class="close">Close</button>
           <button class="mix">OpenURL+Close</button>
           <button class="test">For test</button>
@@ -268,14 +268,14 @@
           }
         });
       document
-        .querySelector(".custom-click")
+        .querySelector(".execute-action")
         .addEventListener("click", function (e) {
           const actionId = JSON.stringify({
-              "routeType": "popup",
-              "routeTitle": "체크인",
-              "routeValue": "https://app.ssglanders.com/checkinList"
-          })
-          // FlareLaneIAMBridge.click(a);
+            routeType: "popup",
+            routeTitle: "체크인",
+            routeValue: "https://app.ssglanders.com/checkinList",
+          });
+          // FlareLaneIAMBridge.executeAction(actionId);
 
           if (
             window.webkit &&
@@ -283,78 +283,76 @@
             window.webkit.messageHandlers.FlareLaneIAMBridge
           ) {
             var message = {
-              method: "click",
-              actionId
+              method: "executeAction",
+              actionId,
             };
             webkit.messageHandlers.FlareLaneIAMBridge.postMessage(message);
           } else if (window.FlareLaneIAMBridge) {
-            FlareLaneIAMBridge.click(actionId);
+            FlareLaneIAMBridge.executeAction(actionId);
           }
         });
-      document
-        .querySelector(".close")
-        .addEventListener("click", function (e) {
-          // FlareLaneIAMBridge.close();
+      document.querySelector(".close").addEventListener("click", function (e) {
+        // FlareLaneIAMBridge.close();
 
-          if (
-            window.webkit &&
-            window.webkit.messageHandlers &&
-            window.webkit.messageHandlers.FlareLaneIAMBridge
-          ) {
-            var message = {
-              method: "close",
-            };
-            webkit.messageHandlers.FlareLaneIAMBridge.postMessage(message);
-          } else if (window.FlareLaneIAMBridge) {
-            FlareLaneIAMBridge.close();
-          }
-        });
-      document
-        .querySelector(".mix")
-        .addEventListener("click", function (e) {
-          // FlareLaneIAMBridge.openUrl("https://google.com");FlareLaneIAMBridge.close();
+        if (
+          window.webkit &&
+          window.webkit.messageHandlers &&
+          window.webkit.messageHandlers.FlareLaneIAMBridge
+        ) {
+          var message = {
+            method: "close",
+          };
+          webkit.messageHandlers.FlareLaneIAMBridge.postMessage(message);
+        } else if (window.FlareLaneIAMBridge) {
+          FlareLaneIAMBridge.close();
+        }
+      });
+      document.querySelector(".mix").addEventListener("click", function (e) {
+        // FlareLaneIAMBridge.openUrl("https://google.com");FlareLaneIAMBridge.close();
 
-          if (
-            window.webkit &&
-            window.webkit.messageHandlers &&
-            window.webkit.messageHandlers.FlareLaneIAMBridge
-          ) {
-            var message = {
-              method: "openUrl",
-              url: "https://google.com/",
-            };
-            webkit.messageHandlers.FlareLaneIAMBridge.postMessage(message);
-            var message = {
-              method: "close",
-            };
-            webkit.messageHandlers.FlareLaneIAMBridge.postMessage(message);
-          } else if (window.FlareLaneIAMBridge) {
-            FlareLaneIAMBridge.openUrl("https://flarelane.co.kr/");
-            FlareLaneIAMBridge.close();
-          }
-        });
+        if (
+          window.webkit &&
+          window.webkit.messageHandlers &&
+          window.webkit.messageHandlers.FlareLaneIAMBridge
+        ) {
+          var message = {
+            method: "openUrl",
+            url: "https://google.com/",
+          };
+          webkit.messageHandlers.FlareLaneIAMBridge.postMessage(message);
+          var message = {
+            method: "close",
+          };
+          webkit.messageHandlers.FlareLaneIAMBridge.postMessage(message);
+        } else if (window.FlareLaneIAMBridge) {
+          FlareLaneIAMBridge.openUrl("https://flarelane.co.kr/");
+          FlareLaneIAMBridge.close();
+        }
+      });
 
       // 리플 애니메이션 스크립트
-      document.querySelectorAll('.button-container button').forEach(button => {
-        button.addEventListener('click', function (e) {
-          const ripple = document.createElement('span');
-          const rect = button.getBoundingClientRect();
-          const size = Math.max(rect.width, rect.height);
-          const x = e.clientX - rect.left - size / 2;
-          const y = e.clientY - rect.top - size / 2;
+      document
+        .querySelectorAll(".button-container button")
+        .forEach((button) => {
+          button.addEventListener("click", function (e) {
+            const ripple = document.createElement("span");
+            const rect = button.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = e.clientX - rect.left - size / 2;
+            const y = e.clientY - rect.top - size / 2;
 
-          ripple.style.width = ripple.style.height = `${size}px`;
-          ripple.style.left = `${x}px`;
-          ripple.style.top = `${y}px`;
-          ripple.classList.add('ripple');
+            ripple.style.width = ripple.style.height = `${size}px`;
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+            ripple.classList.add("ripple");
 
-          button.appendChild(ripple);
+            button.appendChild(ripple);
 
-          setTimeout(() => {
-            ripple.remove();
-          }, 600); // 애니메이션 지속 시간
+            setTimeout(() => {
+              ripple.remove();
+            }, 600); // 애니메이션 지속 시간
+          });
         });
-      });
     </script>
   </body>
 </html>
