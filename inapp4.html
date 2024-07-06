@@ -316,12 +316,12 @@
           window.webkit.messageHandlers.FlareLaneIAMBridge
         ) {
           var message = {
-            method: "openUrl",
-            url: "https://google.com/",
+            method: "close",
           };
           webkit.messageHandlers.FlareLaneIAMBridge.postMessage(message);
           var message = {
-            method: "close",
+            method: "openUrl",
+            url: "https://google.com/",
           };
           webkit.messageHandlers.FlareLaneIAMBridge.postMessage(message);
         } else if (window.FlareLaneIAMBridge) {
