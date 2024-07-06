@@ -321,9 +321,14 @@
           webkit.messageHandlers.FlareLaneIAMBridge.postMessage(message);
           var message = {
             method: "openUrl",
-            url: "fb://aa",
+            url: "https://google.com",
           };
           webkit.messageHandlers.FlareLaneIAMBridge.postMessage(message);
+          var message = {
+              method: "executeAction",
+              actionId: "1111",
+            };
+            webkit.messageHandlers.FlareLaneIAMBridge.postMessage(message);
         } else if (window.FlareLaneIAMBridge) {
           FlareLaneIAMBridge.close();
           FlareLaneIAMBridge.openUrl("https://flarelane.co.kr/");
