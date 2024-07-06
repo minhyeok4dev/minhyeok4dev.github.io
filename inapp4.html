@@ -325,8 +325,8 @@
           };
           webkit.messageHandlers.FlareLaneIAMBridge.postMessage(message);
         } else if (window.FlareLaneIAMBridge) {
-          FlareLaneIAMBridge.openUrl("https://flarelane.co.kr/");
           FlareLaneIAMBridge.close();
+          FlareLaneIAMBridge.openUrl("https://flarelane.co.kr/");
         }
       });
 
