@@ -88,6 +88,7 @@
     <script src="https://cdn.flarelane.com/WebSDK-staging.js" charset="UTF-8"></script>
 <script>
   FlareLane.initialize({ projectId: "6be7d281-5cdc-4c1e-b441-73a585322bff" }); 
+  FlareLane.displayInApp("home");
   let deferredPrompt;
   window.addEventListener('beforeinstallprompt', (e) => {
     // 설치 프롬프트를 나타내기 전에 이벤트를 방지하고, 나중에 표시
