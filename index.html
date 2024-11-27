@@ -96,6 +96,7 @@ var x = d.getElementsByTagName(s)[0];x.parentNode.insertBefore(se,x);
     <script src="https://cdn.flarelane.com/WebSDK.js" charset="UTF-8"></script>
 <script>
   FlareLane.initialize({ projectId: "a43cdc82-0ea5-4fdd-aebc-1940fe99b6c3" }); 
+  FlareLane.setInAppMessageActionHandler((iam, aId) => { console.log(`setInAppMessageActionHandler: iam: ${iam}, aid: ${aId}`) });
   FlareLane.displayInApp("home");
   let deferredPrompt;
   window.addEventListener('beforeinstallprompt', (e) => {
