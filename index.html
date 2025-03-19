@@ -1,135 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <link rel="manifest" href="manifest.json" />
-    <title>테스트 쇼핑몰</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f0f0f0;
-        margin: 0;
-        padding: 0;
+<html lang="ko">
+<head>
+  <title>Figma Prototype Embed</title>
+  <link rel="manifest" href="./manifest.json">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+    iframe {
+      border: none;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <iframe id="figmaEmbed"
+    src="https://embed.figma.com/proto/iutxFU5Dam2BSiIi3b6zpV/Untitled?page-id=0%3A1&node-id=1-11&viewport=544%2C493%2C0.62&scaling=contain&content-scaling=fixed&starting-point-node-id=1%3A10&embed-host=share"
+    allowfullscreen></iframe>
+
+  <script src="https://cdn.flarelane.com/WebSDK.js" charset="UTF-8"></script>
+  <script>
+    FlareLane.initialize({ projectId: "7df06583-e3cc-4c85-85e7-e1f56973a297" });
+
+    const iframe = document.getElementById('figmaEmbed');
+
+    // Figma iframe 내의 화면 변경을 감지하는 방법
+    window.addEventListener("message", function(event) {
+      // Figma는 postMessage를 사용하여 이벤트를 보냅니다.
+      if (event.origin.includes('figma.com')) {
+        console.log('Figma 이벤트:', event.data);
+
+        // 화면 변경 이벤트를 캐치하여 FlareLane으로 이벤트 발생
+        FlareLane.track('FigmaPrototypeEvent', {
+          eventData: event.data
+        });
       }
-
-      header {
-        background-color: #333;
-        color: #fff;
-        text-align: center;
-        padding: 10px;
-      }
-
-      .container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-      }
-
-      .product {
-        background-color: #fff;
-        border: 1px solid #ddd;
-        margin: 10px;
-        padding: 20px;
-      }
-
-      .product img {
-        max-width: 100%;
-        height: auto;
-      }
-
-      .product-title {
-        font-weight: bold;
-        margin: 10px 0;
-      }
-
-      .product-price {
-        color: #e74c3c;
-      }
-
-      .btn {
-        background-color: #3498db;
-        color: #fff;
-        padding: 10px 20px;
-        border: none;
-        cursor: pointer;
-      }
-    </style>
-
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-W37T2GZB');</script>
-<!-- End Google Tag Manager -->
-
-    //스크립트 예시
-<script>
-(function(d,s,i) {
-var se = d.createElement(s);se.type='text/javascript';se.async=true;se.src='//assets.datarize.ai/logger/genesis.'+i+'.min.js';
-var x = d.getElementsByTagName(s)[0];x.parentNode.insertBefore(se,x);
-})(document, 'script', 'site_id');
-</script>
-
-    <!-- Paste this right before your closing </head> tag -->
-    <script type="text/javascript">
-      (function (f, b) { if (!b.__SV) { var e, g, i, h; window.mixpanel = b; b._i = []; b.init = function (e, f, c) { function g(a, d) { var b = d.split("."); 2 == b.length && ((a = a[b[0]]), (d = b[1])); a[d] = function () { a.push([d].concat(Array.prototype.slice.call(arguments, 0))); }; } var a = b; "undefined" !== typeof c ? (a = b[c] = []) : (c = "mixpanel"); a.people = a.people || []; a.toString = function (a) { var d = "mixpanel"; "mixpanel" !== c && (d += "." + c); a || (d += " (stub)"); return d; }; a.people.toString = function () { return a.toString(1) + ".people (stub)"; }; i = "disable time_event track track_pageview track_links track_forms track_with_groups add_group set_group remove_group register register_once alias unregister identify name_tag set_config reset opt_in_tracking opt_out_tracking has_opted_in_tracking has_opted_out_tracking clear_opt_in_out_tracking start_batch_senders people.set people.set_once people.unset people.increment people.append people.union people.track_charge people.clear_charges people.delete_user people.remove".split( " "); for (h = 0; h < i.length; h++) g(a, i[h]); var j = "set set_once union unset remove delete".split(" "); a.get_group = function () { function b(c) { d[c] = function () { call2_args = arguments; call2 = [c].concat(Array.prototype.slice.call(call2_args, 0)); a.push([e, call2]); }; } for ( var d = {}, e = ["get_group"].concat( Array.prototype.slice.call(arguments, 0)), c = 0; c < j.length; c++) b(j[c]); return d; }; b._i.push([e, f, c]); }; b.__SV = 1.2; e = f.createElement("script"); e.type = "text/javascript"; e.async = !0; e.src = "undefined" !== typeof MIXPANEL_CUSTOM_LIB_URL ? MIXPANEL_CUSTOM_LIB_URL : "file:" === f.location.protocol && "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//) ? "https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js" : "//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js"; g = f.getElementsByTagName("script")[0]; g.parentNode.insertBefore(e, g); } })(document, window.mixpanel || []);
-    </script>
-  </head>
-  <body>
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W37T2GZB"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-    <header>
-      <h1>테스트 쇼핑몰</h1>
-    </header>
-    <div class="container">
-      <div class="product">
-        <h2 class="product-title">상품 제목 1</h2>
-        <p class="product-price">$19.99</p>
-        <button class="btn" onclick="showPrompt()">장바구니에 담기</button>
-      </div>
-      <div class="product">
-        <h2 class="product-title">상품 제목 2</h2>
-        <p class="product-price">$29.99</p>
-        <button class="btn" onclick="showPrompt()">장바구니에 담기</button>
-      </div>
-
-      <a href="https://flarelane.co.kr">한국 홈페이지</a>
-      <a href="https://flarelane.com">영문 홈페이지</a>
-      <!-- 여기에 더 많은 상품 정보를 추가할 수 있습니다. -->
-    </div>
-
-
-    <script src="https://cdn.flarelane.com/WebSDK.js" charset="UTF-8"></script>
-<script>
-  FlareLane.initialize({ projectId: "a43cdc82-0ea5-4fdd-aebc-1940fe99b6c3" }); 
-  FlareLane.setInAppMessageActionHandler((iam, aId) => { console.log(`setInAppMessageActionHandler: iam: ${JSON.stringify(iam)}, aid: ${aId}`) });
-  FlareLane.displayInApp("home");
-  let deferredPrompt;
-  window.addEventListener('beforeinstallprompt', (e) => {
-    // 설치 프롬프트를 나타내기 전에 이벤트를 방지하고, 나중에 표시
-    e.preventDefault();
-    deferredPrompt = e;
-    // 사용자가 설치를 요청할 수 있는 UI 요소를 보여줍니다.
-  });
-  
-  // 사용자가 설치를 요청할 때
-  function showPrompt() {
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === 'accepted') {
-        console.log('User accepted the A2HS prompt');
-      } else {
-        console.log('User dismissed the A2HS prompt');
-      }
-      deferredPrompt = null;
     });
-  }
-</script>
-  </body>
+  </script>
+</body>
 </html>
