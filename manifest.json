@@ -1,16 +1,20 @@
 {
-  "theme_color": "#2b5349",
-  "background_color": "#2b5349",
+  "name": "아웃백",
+  "short_name": "아웃백",
+  "start_url": "./outback.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#d92f1c",
   "icons": [
     {
-      "sizes": "192x192",
-      "src": "https://s.pstatic.net/static/www/mobile/edit/20231109_1095/upload_1699514358075UmvS8.png",
-      "type": "image/png"
+      "src": "images/outback-icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "images/outback-icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
     }
-  ],
-  "orientation": "portrait",
-  "display": "standalone",
-  "name": "플레어몰",
-  "short_name": "플레어몰",
-  "start_url": "/"
+  ]
 }
