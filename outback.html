@@ -1,11 +1,46 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-<title>Page Title</title>
+  <title>Figma Prototype Embed</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+    iframe {
+      border: none;
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+  </style>
 </head>
 <body>
-<iframe style="border: 1px solid rgba(0, 0, 0, 0.1);" width="800" height="450" src="https://embed.figma.com/proto/iutxFU5Dam2BSiIi3b6zpV/Untitled?page-id=0%3A1&node-id=1-11&viewport=544%2C493%2C0.62&scaling=contain&content-scaling=fixed&starting-point-node-id=1%3A10&embed-host=share" allowfullscreen></iframe>
-<script src="https://cdn.flarelane.com/WebSDK.js" charset="UTF-8"></script>
-<script> FlareLane.initialize({ projectId: "7df06583-e3cc-4c85-85e7-e1f56973a297" }); </script>
+  <iframe id="figmaEmbed"
+    src="https://embed.figma.com/proto/iutxFU5Dam2BSiIi3b6zpV/Untitled?page-id=0%3A1&node-id=1-11&viewport=544%2C493%2C0.62&scaling=contain&content-scaling=fixed&starting-point-node-id=1%3A10&embed-host=share"
+    allowfullscreen></iframe>
+
+  <script src="https://cdn.flarelane.com/WebSDK.js" charset="UTF-8"></script>
+  <script>
+    FlareLane.initialize({ projectId: "7df06583-e3cc-4c85-85e7-e1f56973a297" });
+
+    const iframe = document.getElementById('figmaEmbed');
+
+    // Figma iframe 내의 화면 변경을 감지하는 방법
+    window.addEventListener("message", function(event) {
+      // Figma는 postMessage를 사용하여 이벤트를 보냅니다.
+      if (event.origin.includes('figma.com')) {
+        console.log('Figma 이벤트:', event.data);
+
+        // 화면 변경 이벤트를 캐치하여 FlareLane으로 이벤트 발생
+        FlareLane.track('FigmaPrototypeEvent', {
+          eventData: event.data
+        });
+      }
+    });
+  </script>
 </body>
 </html>
