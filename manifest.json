@@ -4,7 +4,7 @@
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#d92f1c",
+  "theme_color": "#b01c12",
   "icons": [
     {
       "src": "images/outback-icon-192.png",
