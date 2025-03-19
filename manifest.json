@@ -1,7 +1,7 @@
 {
   "name": "아웃백",
   "short_name": "아웃백",
-  "start_url": "./outback.html",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#d92f1c",
