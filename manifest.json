@@ -1,18 +1,13 @@
 {
-  "name": "아웃백",
-  "short_name": "아웃백",
+  "name": "해피포인트",
+  "short_name": "해피포인트",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#b01c12",
   "icons": [
     {
-      "src": "images/outback-icon-192.png",
-      "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "images/outback-icon-512.png",
+      "src": "images/happypoint-icon-512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
