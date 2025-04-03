@@ -4,7 +4,7 @@
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#b01c12",
+  "theme_color": "#f06b23",
   "icons": [
     {
       "src": "images/happypoint-icon-512.png",
