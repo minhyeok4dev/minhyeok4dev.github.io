@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>버튼 예제</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        padding: 40px;
+        background-color: #f5f5f5;
+      }
+      .button-container {
+        display: flex;
+        gap: 10px;
+      }
+      .btn {
+        padding: 10px 20px;
+        background-color: #3498db;
+        border: none;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.2s ease;
+      }
+      .btn:hover {
+        background-color: #2980b9;
+      }
+    </style>
+    <script src="https://cdn.flarelane.com/WebSDK.js" charset="UTF-8"></script>
+  </head>
+  <body>
+    <h2>여러 개의 버튼</h2>
+    <div class="button-container">
+      <button class="btn" onclick="trackEvent()">trackEvent</button>
+      <button class="btn" onclick="trackEventWithData()">
+        trackEventWithData
+      </button>
+    </div>
+
+    <script>
+      FlareLane.initialize({
+        projectId: "a43cdc82-0ea5-4fdd-aebc-1940fe99b6c3",
+      });
+
+      function trackEvent() {
+        FlareLane.trackEvent("test_event!!");
+      }
+
+      function trackEventWithData() {
+        FlareLane.trackEvent("test_event!!", {
+          data: {
+            key1: "value1",
+            key2: "value2",
+          },
+        });
+      }
+    </script>
+  </body>
+</html>
